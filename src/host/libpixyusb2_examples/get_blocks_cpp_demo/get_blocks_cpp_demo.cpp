@@ -51,6 +51,12 @@ void  get_blocks()
 
 int main()
 {
+  // Ensure consistent line-buffered output for stdout.
+  // This ensures that data is outputted as soon as it's available, 
+  // regardless of whether the program's output is being piped to another program or displayed directly.
+  // Without this, there could be delays in data output due to buffering when piped.
+  setvbuf(stdout, NULL, _IOLBF, BUFSIZ)
+
   int  Result;
 
   // Catch CTRL+C (SIGINT) signals //
